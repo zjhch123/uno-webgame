@@ -1,0 +1,15 @@
+{
+  "ping": {
+    "code": 200,
+    "message": "pong"
+  },
+  "user": {
+    "isLogin": false
+  },
+  "login": {
+    "isLogin": true,
+    "uid": 1,
+    "username": "zjhch123",
+    "level": 10
+  }
+}
