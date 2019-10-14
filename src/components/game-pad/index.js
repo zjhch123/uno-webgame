@@ -4,6 +4,13 @@ import classNames from 'classnames';
 
 import './style.scss';
 import { Button } from '../button';
+import { Card } from '../card';
+import {
+  CardType,
+  CardColor,
+  FunctionalType,
+  CardValue,
+} from '../../constants/card';
 
 export function GamePad({
   className,
@@ -11,11 +18,19 @@ export function GamePad({
   return (
     <div className={classNames('game-pad', className)}>
       <div className="action-controls">
-        <Button className="pass">不出</Button>
-        <Button className="confirm">确认</Button>
+        <Button className="action pass">不出</Button>
+        <Button className="action confirm">确认</Button>
+        <Button className="action uno">UNO</Button>
       </div>
-      <div className="card-container">
-        card
+      <div className="cards-container">
+        <Card type={CardType.Normal} color={CardColor.Blue} value={CardValue.Eight} />
+        <Card type={CardType.Functional} functionalType={FunctionalType.Add4} />
+        <Card
+          type={CardType.Functional}
+          functionalType={FunctionalType.Add2}
+          color={CardColor.Yellow}
+        />
+        <Card type={CardType.Unknown} />
       </div>
     </div>
   );

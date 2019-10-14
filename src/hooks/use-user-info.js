@@ -8,7 +8,7 @@ export function useUserInfo() {
 
   useEffect(() => {
     User().then(setUserInfo);
-  }, []); // eslint-disable-line
+  }, [User]);
 
   return [userInfo, setUserInfo];
 }

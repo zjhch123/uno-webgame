@@ -1,0 +1,24 @@
+.game-pad {
+  padding: 20px;
+  .action-controls {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    .action {
+      margin: 0 10px;
+    }
+  }
+  .cards-container {
+    position: relative;
+    height: 120px;
+    .card {
+      position: absolute;
+    }
+    @for $i from 1 through 100 {
+      .card:nth-child(#{$i + 1}) {
+        left: 30px * $i;
+      }
+    }
+  }
+}

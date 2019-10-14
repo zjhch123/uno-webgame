@@ -4,12 +4,19 @@
     "message": "pong"
   },
   "user": {
-    "isLogin": false
+    "isLogin": true,
+    "uid": 1,
+    "username": "zjhch123",
+    "level": 10,
+    "roomId": 1000,
+    "status": 2
   },
   "login": {
     "isLogin": true,
     "uid": 1,
     "username": "zjhch123",
-    "level": 10
+    "level": 10,
+    "roomId": 1000,
+    "status": 2
   }
 }
