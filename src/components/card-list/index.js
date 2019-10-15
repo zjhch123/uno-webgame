@@ -10,6 +10,8 @@ import {
   Size,
 } from '../../constants/card';
 
+const SizeCssVariable = { '--width': `${Size.width}px`, '--height': `${Size.height}px` };
+
 export function CardList({
   className,
   list,
@@ -26,8 +28,10 @@ export function CardList({
     }
   }, [list.length]);
 
+  const width = (list.length - 1) * moveLeft + Size.width;
+
   return (
-    <div className={classNames('card-list', className)} style={Size}>
+    <div className={classNames('card-list', className)} style={{ ...SizeCssVariable, width }}>
       {
         list.map(({ id, ...props }, index) => (
           <Card {...props} key={id} style={{ left: index * moveLeft }} />

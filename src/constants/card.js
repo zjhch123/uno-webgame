@@ -31,6 +31,6 @@ export const CardColor = {
 };
 
 export const Size = {
-  '--width': '90px',
-  '--height': '120px',
+  width: 90,
+  height: 120,
 };
