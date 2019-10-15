@@ -9,16 +9,4 @@
       margin: 0 10px;
     }
   }
-  .cards-container {
-    position: relative;
-    height: 120px;
-    .card {
-      position: absolute;
-    }
-    @for $i from 1 through 100 {
-      .card:nth-child(#{$i + 1}) {
-        left: 30px * $i;
-      }
-    }
-  }
 }

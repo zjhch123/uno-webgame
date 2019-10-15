@@ -4,13 +4,8 @@ import classNames from 'classnames';
 
 import './style.scss';
 import { Button } from '../button';
-import { Card } from '../card';
-import {
-  CardType,
-  CardColor,
-  FunctionalType,
-  CardValue,
-} from '../../constants/card';
+import { CardList } from '../card-list';
+import { AllCards } from '../../mock/all-cards';
 
 export function GamePad({
   className,
@@ -23,14 +18,7 @@ export function GamePad({
         <Button className="action uno">UNO</Button>
       </div>
       <div className="cards-container">
-        <Card type={CardType.Normal} color={CardColor.Blue} value={CardValue.Eight} />
-        <Card type={CardType.Functional} functionalType={FunctionalType.Add4} />
-        <Card
-          type={CardType.Functional}
-          functionalType={FunctionalType.Add2}
-          color={CardColor.Yellow}
-        />
-        <Card type={CardType.Unknown} />
+        <CardList list={AllCards} />
       </div>
     </div>
   );

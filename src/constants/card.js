@@ -1,10 +1,10 @@
 export const CardType = {
   Normal: 0,
-  Functional: 1,
   Unknown: 2,
 };
 
 export const CardValue = {
+  Zero: 0,
   One: 1,
   Two: 2,
   Three: 3,
@@ -14,7 +14,11 @@ export const CardValue = {
   Seven: 7,
   Eight: 8,
   Night: 9,
-  Zero: 0,
+  Revert: 10,
+  Ban: 11,
+  Add2: 12,
+  Add4: 13,
+  ChangeColor: 14,
   None: -1,
 };
 
@@ -26,11 +30,7 @@ export const CardColor = {
   None: -1,
 };
 
-export const FunctionalType = {
-  Revert: 0,
-  Ban: 1,
-  Add2: 2,
-  Add4: 3,
-  ChangeColor: 4,
-  None: -1,
+export const Size = {
+  '--width': '90px',
+  '--height': '120px',
 };

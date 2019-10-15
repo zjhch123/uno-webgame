@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import {
   CardType,
   CardColor,
-  FunctionalType,
   CardValue,
 } from '../../constants/card';
 import './style.scss';
@@ -13,40 +12,62 @@ import './style.scss';
 export function Card({
   type,
   color,
-  functionalType,
   value,
+  style,
 }) {
   const className = classNames({
     card: true,
     [`type-${type}`]: true,
+    [`card-value-${value}`]: true,
     [`color-${color}`]: color !== CardColor.None,
-    [`function-type-${functionalType}`]: functionalType !== FunctionalType.None,
   });
 
-  const renderFunctional = () => {
-    switch (functionalType) {
-      case FunctionalType.Add2: return (
+  const renderNormal = () => {
+    switch (value) {
+      case CardValue.Zero:
+      case CardValue.One:
+      case CardValue.Two:
+      case CardValue.Three:
+      case CardValue.Four:
+      case CardValue.Five:
+      case CardValue.Six:
+      case CardValue.Seven:
+      case CardValue.Eight:
+      case CardValue.Night:
+        return (
+          <>
+            <span className="card-left-top">{value}</span>
+            <span className="card-center">{value}</span>
+          </>
+        );
+      case CardValue.Add2: return (
         <>
           <span className="card-left-top">+2</span>
           <span className="card-center">+2</span>
         </>
       );
-      case FunctionalType.Add4: return (
+      case CardValue.Add4: return (
         <>
           <span className="card-left-top">+4</span>
           <span className="card-center">+4</span>
         </>
       );
-      case FunctionalType.Ban: return (
+      case CardValue.Ban: return (
         <>
+          <span className="card-left-top" role="img" aria-label="ban">🚫</span>
+          <span className="card-center" role="img" aria-label="ban">🚫</span>
         </>
       );
-      case FunctionalType.ChangeColor: return (
+      case CardValue.ChangeColor: return (
         <>
+          <span className="card-left-top" role="img" aria-label="change-color">🍭</span>
+          <span className="card-center" role="img" aria-label="change-color">🍭</span>
         </>
       );
-      case FunctionalType.Revert: return (
+      case CardValue.Revert: return (
         <>
+          <span className="card-left-top" role="img" aria-label="revert">🔄</span>
+          <span className="card-center" role="img" aria-label="revert">🔄</span>
         </>
       );
       default: return null;
@@ -60,15 +81,9 @@ export function Card({
           <span className="card-center font-small">UNO</span>
         </>
       );
-      case CardType.Functional: return (
-        <>
-          { renderFunctional() }
-        </>
-      );
       case CardType.Normal: return (
         <>
-          <span className="card-left-top">{value}</span>
-          <span className="card-center">{value}</span>
+          { renderNormal() }
         </>
       );
       default: return null;
@@ -76,9 +91,11 @@ export function Card({
   };
 
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       <div className="card-container">
-        { renderContainer() }
+        <div className="card-mask">
+          { renderContainer() }
+        </div>
       </div>
     </div>
   );
@@ -87,12 +104,12 @@ export function Card({
 Card.propTypes = {
   type: PropTypes.oneOf(_.values(CardType)).isRequired,
   color: PropTypes.oneOf(_.values(CardColor)),
-  functionalType: PropTypes.oneOf(_.values(FunctionalType)),
   value: PropTypes.oneOf(_.values(CardValue)),
+  style: PropTypes.shape({}),
 };
 
 Card.defaultProps = {
   color: CardColor.None,
-  functionalType: FunctionalType.None,
   value: CardValue.None,
+  style: {},
 };

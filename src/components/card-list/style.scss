@@ -1,0 +1,85 @@
+.card-list {
+  white-space: nowrap;
+  height: var(--height);
+  margin: 20px 0;
+  position: relative;
+  .card {
+    position: absolute;
+    top: 0;
+  }
+}
+
+.card {
+  width: var(--width);
+  height: var(--height);
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  &:hover .card-container {
+    transform: translateY(-20px) translateZ(0);
+  }
+  .card-container {
+    width: var(--width);
+    height: var(--height);
+    pointer-events: none;
+    user-select: none;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+    border-radius: 12px;
+    overflow: hidden;
+    color: white;
+    font-weight: bolder;
+    position: relative;
+    .card-mask {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.3);
+    }
+  }
+  .card-left-top {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 20px;
+  }
+  .card-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    &.font-small {
+      font-size: 24px;
+    }
+  }
+}
+
+.card {
+  &.color-0 .card-container {
+    background: red,
+  }
+  &.color-1 .card-container {
+    background: green,
+  }
+  &.color-2 .card-container {
+    background: yellow,
+  }
+  &.color-3 .card-container {
+    background: blue,
+  }
+  &.type-2 .card-container {
+    background: gray;
+  }
+  &.card-value-13 .card-container ,
+  &.card-value-14 .card-container {
+    background-color: black;
+    .card-center {
+      display: block;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: orange;
+      line-height: 65px;
+      text-align: center;
+    }
+  }
+}
