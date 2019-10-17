@@ -4,6 +4,51 @@ import {
   CardValue,
 } from '../constants/card';
 
+export const EnemyCards = [
+  {
+    id: 1,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 2,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 3,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 4,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 5,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 6,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 7,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+]
+
 export const AllCards = [
   {
     id: 1,
@@ -58,11 +103,5 @@ export const AllCards = [
     type: CardType.Normal,
     color: CardColor.Green,
     value: CardValue.ChangeColor,
-  },
-  {
-    id: 10,
-    type: CardType.Unknown,
-    value: CardValue.None,
-    color: CardColor.None,
   },
 ];

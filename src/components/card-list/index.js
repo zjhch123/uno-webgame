@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'underscore';
@@ -9,32 +9,77 @@ import {
   CardValue,
   Size,
 } from '../../constants/card';
+import { Type } from '../../constants/card-list';
 
-const SizeCssVariable = { '--width': `${Size.width}px`, '--height': `${Size.height}px` };
+const InitialZIndex = 100;
 
 export function CardList({
   className,
   list,
+  scale,
+  type,
 }) {
-  const [moveLeft, setMoveLeft] = useState(0);
+  const [marginLength, setMarginLength] = useState(0);
+
+  const options = useMemo(() => {
+    const cardListSize = (list.length - 1) * marginLength + Size.width;
+
+    switch (type) {
+      case Type.Left:
+      case Type.Right:
+        return {
+          marginKey: 'top',
+          direction: type === Type.Left ? -1 : 1,
+          style: {
+            '--width': `${Size.height}px`,
+            '--height': `${Size.width}px`,
+            height: cardListSize,
+          },
+        };
+      case Type.Top:
+      case Type.Bottom:
+        return {
+          marginKey: 'left',
+          direction: 1,
+          style: {
+            '--width': `${Size.width}px`,
+            '--height': `${Size.height}px`,
+            width: cardListSize,
+          },
+        };
+      default: return {};
+    }
+  }, [type, list.length, marginLength]);
+
+  const cardListClassName = useMemo(() => classNames(className, 'card-list', {
+    'card-list-left': type === Type.Left,
+    'card-list-right': type === Type.Right,
+    'card-list-top': type === Type.Top,
+    'card-list-bottom': type === Type.Bottom,
+  }), [type, className]);
 
   useEffect(() => {
     if (list.length < 7) {
-      setMoveLeft(70);
+      setMarginLength(70 / scale);
     } else if (list.length < 14) {
-      setMoveLeft(50);
+      setMarginLength(50 / scale);
     } else {
-      setMoveLeft(30);
+      setMarginLength(30 / scale);
     }
-  }, [list.length]);
-
-  const width = (list.length - 1) * moveLeft + Size.width;
+  }, [list.length, scale]);
 
   return (
-    <div className={classNames('card-list', className)} style={{ ...SizeCssVariable, width }}>
+    <div className={cardListClassName} style={options.style}>
       {
         list.map(({ id, ...props }, index) => (
-          <Card {...props} key={id} style={{ left: index * moveLeft }} />
+          <Card
+            key={id}
+            style={{
+              [options.marginKey]: index * marginLength,
+              zIndex: index * options.direction + InitialZIndex,
+            }}
+            {...props}
+          />
         ))
       }
     </div>
@@ -49,9 +94,13 @@ CardList.propTypes = {
     color: PropTypes.oneOf(_.values(CardColor)),
     value: PropTypes.oneOf(_.values(CardValue)),
   })),
+  scale: PropTypes.number,
+  type: PropTypes.oneOf(_.values(Type)),
 };
 
 CardList.defaultProps = {
   className: '',
   list: [],
+  scale: 1,
+  type: Type.Bottom,
 };

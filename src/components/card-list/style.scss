@@ -1,7 +1,6 @@
 .card-list {
   white-space: nowrap;
-  height: var(--height);
-  margin: 20px 0;
+  
   position: relative;
   .card {
     position: absolute;
@@ -9,21 +8,56 @@
   }
 }
 
+.card-list-top,
+.card-list-bottom {
+  height: var(--height);
+  margin: 20px 0;
+  .card-content {
+    box-shadow: 5px 1px 15px rgba(0,0,0,.3);
+  }
+}
+
+.card-list-left,
+.card-list-right {
+  width: var(--width);
+  margin: 0 20px;
+  .card-content {
+    box-shadow: 1px 5px 15px rgba(0,0,0,.3);
+  }
+}
+
+.card-list-top {
+  .card-center {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+.card-list-left {
+  .card-center {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.card-list-bottom {
+  .card-center {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.card-list-right {
+  .card-center {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+}
+
 .card {
   width: var(--width);
   height: var(--height);
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer;
-  &:hover .card-container {
-    transform: translateY(-20px) translateZ(0);
-  }
-  .card-container {
+  .card-content {
     width: var(--width);
     height: var(--height);
     pointer-events: none;
     user-select: none;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.3);
     border-radius: 12px;
     overflow: hidden;
     color: white;
@@ -45,7 +79,6 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
     font-size: 40px;
     &.font-small {
       font-size: 24px;
@@ -54,23 +87,23 @@
 }
 
 .card {
-  &.color-0 .card-container {
+  &.color-0 .card-content {
     background: red,
   }
-  &.color-1 .card-container {
+  &.color-1 .card-content {
     background: green,
   }
-  &.color-2 .card-container {
+  &.color-2 .card-content {
     background: yellow,
   }
-  &.color-3 .card-container {
+  &.color-3 .card-content {
     background: blue,
   }
-  &.type-2 .card-container {
+  &.type-2 .card-content {
     background: gray;
   }
-  &.card-value-13 .card-container ,
-  &.card-value-14 .card-container {
+  &.card-value-13 .card-content ,
+  &.card-value-14 .card-content {
     background-color: black;
     .card-center {
       display: block;

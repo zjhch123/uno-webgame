@@ -3,10 +3,32 @@
   height: 100%;
   background: white;
   position: relative;
+  .enemy-right,
+  .enemy-left {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .enemy-left {
+    left: 0;
+  }
+  .enemy-right {
+    right: 0;
+  }
+  .enemy-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .game-pad-me {
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+    .card {
+      cursor: pointer;
+      &:hover .card-content {
+        transform: translateY(-20px) translateZ(0);
+      }
+    }
   }
 }

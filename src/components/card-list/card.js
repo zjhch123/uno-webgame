@@ -92,7 +92,7 @@ export function Card({
 
   return (
     <div className={className} style={style}>
-      <div className="card-container">
+      <div className="card-content">
         <div className="card-mask">
           { renderContainer() }
         </div>
