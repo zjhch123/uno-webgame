@@ -11,7 +11,7 @@ import {
 } from '../../constants/card';
 import { Type } from '../../constants/card-list';
 
-const InitialZIndex = 100;
+const InitialZIndex = 50;
 
 export function CardList({
   className,
@@ -29,7 +29,7 @@ export function CardList({
       case Type.Right:
         return {
           marginKey: 'top',
-          direction: type === Type.Left ? -1 : 1,
+          direction: type === Type.Left ? 1 : -1,
           style: {
             '--width': `${Size.height}px`,
             '--height': `${Size.width}px`,
@@ -40,7 +40,7 @@ export function CardList({
       case Type.Bottom:
         return {
           marginKey: 'left',
-          direction: 1,
+          direction: type === Type.Top ? -1 : 1,
           style: {
             '--width': `${Size.width}px`,
             '--height': `${Size.height}px`,
