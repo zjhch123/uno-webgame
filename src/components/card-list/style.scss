@@ -1,10 +1,10 @@
 .card-list {
   white-space: nowrap;
-  
   position: relative;
   .card {
     position: absolute;
     top: 0;
+    left: 0;
   }
 }
 
@@ -28,25 +28,19 @@
 
 .card-list-top {
   .card-center {
-    transform: translate(-50%, -50%) rotate(180deg);
+    transform: rotate(180deg);
   }
 }
 
 .card-list-left {
   .card-center {
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-}
-
-.card-list-bottom {
-  .card-center {
-    transform: translate(-50%, -50%);
+    transform: rotate(90deg);
   }
 }
 
 .card-list-right {
   .card-center {
-    transform: translate(-50%, -50%) rotate(-90deg);
+    transform: rotate(-90deg);
   }
 }
 
@@ -76,10 +70,18 @@
     font-size: 20px;
   }
   .card-center {
+    display: block;
+    border-radius: 50%;
     position: absolute;
     left: 50%;
     top: 50%;
     font-size: 40px;
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+    margin-left: -32px;
+    margin-top: -32px;
     &.font-small {
       font-size: 24px;
     }
@@ -106,13 +108,7 @@
   &.card-value-14 .card-content {
     background-color: black;
     .card-center {
-      display: block;
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
       background: orange;
-      line-height: 65px;
-      text-align: center;
     }
   }
 }
