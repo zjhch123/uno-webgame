@@ -3,32 +3,118 @@
   height: 100%;
   background: white;
   position: relative;
-  .enemy-right,
-  .enemy-left {
-    top: 50%;
-    transform: translateY(-50%);
+  .room-control {
+    position: relative;
+    z-index: 10;
   }
-  .enemy-left {
-    left: 0;
-  }
-  .enemy-right {
-    right: 0;
-  }
-  .enemy-top {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  .room-layout {
+    z-index: 2;
   }
   .game-pad-me {
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+    z-index: 10;
     .card {
       cursor: pointer;
       &:hover .card-content {
         transform: translateY(-20px) translateZ(0);
       }
+    }
+  }
+}
+
+.room-page {
+  .layout {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .top,
+    .left,
+    .right,
+    .left-top,
+    .right-top {
+      position: absolute;
+    }
+  }
+  .layout-1,
+  .layout-3 {
+    .top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .left,
+    .right {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .left {
+      left: 0;
+    }
+    .right {
+      right: 0;
+    }
+  }
+  .layout-2 {
+    .left-top {
+      top: 0;
+      left: 120px;
+    }
+    .right-top {
+      top: 0;
+      right: 120px;
+    }
+  }
+  .layout-4 {
+    .left,
+    .left-top {
+      left: 0;
+    }
+    .right,
+    .right-top {
+      right: 0;
+    }
+    .left-top,
+    .right-top {
+      top: 0;
+    }
+    
+    .left,
+    .right {
+      bottom: 200px;
+    }
+    .left-top {
+      left: 20%;
+    }
+    .right-top {
+      right: 20%;
+    }
+  }
+  .layout-5 {
+    .top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .left,
+    .left-top {
+      left: 0;
+    }
+    .right,
+    .left {
+      bottom: 80px;
+    }
+    .right-top,
+    .left-top {
+      top: 80px;
+    }
+    .right,
+    .right-top {
+      right: 0;
     }
   }
 }

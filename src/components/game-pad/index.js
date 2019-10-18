@@ -15,7 +15,7 @@ export function GamePad({
       <div className="action-controls">
         <Button className="action pass">不出</Button>
         <Button className="action confirm">确认</Button>
-        <Button className="action uno">UNO</Button>
+        <Button className="action uno">UNO!</Button>
       </div>
       <div className="cards-container">
         <CardList list={AllCards} />

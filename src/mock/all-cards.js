@@ -47,7 +47,85 @@ export const EnemyCards = [
     value: CardValue.None,
     color: CardColor.None,
   },
-]
+  {
+    id: 8,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 9,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 10,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 11,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 12,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 13,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 14,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 15,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 16,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 17,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 18,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 19,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+  {
+    id: 20,
+    type: CardType.Unknown,
+    value: CardValue.None,
+    color: CardColor.None,
+  },
+];
 
 export const AllCards = [
   {
@@ -100,6 +178,60 @@ export const AllCards = [
   },
   {
     id: 9,
+    type: CardType.Normal,
+    color: CardColor.Green,
+    value: CardValue.ChangeColor,
+  },
+  {
+    id: 10,
+    type: CardType.Normal,
+    color: CardColor.Red,
+    value: CardValue.Zero,
+  },
+  {
+    id: 11,
+    type: CardType.Normal,
+    color: CardColor.Yellow,
+    value: CardValue.One,
+  },
+  {
+    id: 12,
+    type: CardType.Normal,
+    color: CardColor.Blue,
+    value: CardValue.Two,
+  },
+  {
+    id: 13,
+    type: CardType.Normal,
+    color: CardColor.Green,
+    value: CardValue.Three,
+  },
+  {
+    id: 14,
+    type: CardType.Normal,
+    color: CardColor.Red,
+    value: CardValue.Add2,
+  },
+  {
+    id: 15,
+    type: CardType.Normal,
+    value: CardValue.Add4,
+    color: CardColor.None,
+  },
+  {
+    id: 16,
+    type: CardType.Normal,
+    color: CardColor.Blue,
+    value: CardValue.Ban,
+  },
+  {
+    id: 17,
+    type: CardType.Normal,
+    color: CardColor.Green,
+    value: CardValue.Revert,
+  },
+  {
+    id: 18,
     type: CardType.Normal,
     color: CardColor.Green,
     value: CardValue.ChangeColor,

@@ -30,21 +30,29 @@ export function Enemy({
 
   const renderActions = () => (
     <div className="enemy-actions">
-      <Button onClick={_.noop}>UNO?</Button>
+      <Button className="enemy-uno" onClick={_.noop}>UNO?</Button>
     </div>
   );
 
   const renderCardList = () => (
-    <CardList
-      className={classNames('enemy-card-list')}
-      list={EnemyCards}
-      scale={2}
-      type={cardListType}
-    />
+    <div className={classNames('enemy-card-list-container', `enemy-card-list-container-${type}`)}>
+      <CardList
+        className={classNames('enemy-card-list')}
+        list={EnemyCards.slice(0, 7)}
+        scale={2.5}
+        type={cardListType}
+      />
+      { EnemyCards.length > 7 && (
+        <div className="enemy-card-extra">
+          +
+          {EnemyCards.length - 7}
+        </div>
+      )}
+    </div>
   );
 
   return (
-    <div className={classNames(className, 'enemy')}>
+    <div className={classNames(className, 'enemy', `enemy-type-${type}`)}>
       {renderActions()}
       {renderCardList()}
     </div>

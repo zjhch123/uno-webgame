@@ -1,4 +1,56 @@
 .enemy {
-  position: absolute;
-  padding: 20px;
+  padding: 15px;
+  &.enemy-type-0 {
+    .enemy-actions {
+      text-align: right;
+    }
+  }
+  &.enemy-type-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .enemy-actions {
+      margin-right: 20px;
+    }
+  }
+  &.enemy-type-2 {
+    .enemy-actions {
+      text-align: left;
+    }
+  }
+  .enemy-card-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.enemy-card-list-container-2 {
+      flex-direction: row-reverse;
+    }
+    .enemy-card-extra {
+      color: black;
+      font-weight: bolder;
+      font-size: 30px;
+      padding: 15px;
+      user-select: none;
+    }
+  }
+  .enemy-actions {
+    user-select: none;
+    .enemy-uno {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      outline: none;
+      background: white;
+      border: 1px solid gray;
+      box-shadow: 2px 2px 0 black;
+      position: relative;
+      &:active {
+        left: 2px;
+        top: 2px;
+        box-shadow: 0 0 0 black;
+      }
+    }
+  }
 };

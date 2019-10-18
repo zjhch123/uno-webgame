@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'underscore';
@@ -68,16 +73,18 @@ export function CardList({
     }
   }, [list.length, scale]);
 
+  const calcStyle = useCallback((index) => ({
+    [options.marginKey]: index * marginLength,
+    zIndex: index * options.direction + InitialZIndex,
+  }), [marginLength, options.direction, options.marginKey]);
+
   return (
     <div className={cardListClassName} style={options.style}>
       {
         list.map(({ id, ...props }, index) => (
           <Card
             key={id}
-            style={{
-              [options.marginKey]: index * marginLength,
-              zIndex: index * options.direction + InitialZIndex,
-            }}
+            style={calcStyle(index)}
             {...props}
           />
         ))
