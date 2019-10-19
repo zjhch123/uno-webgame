@@ -7,14 +7,16 @@ import React, {
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'underscore';
-import { Card } from './card';
+import { Card } from '../card';
 import {
   CardType,
   CardColor,
   CardValue,
-  Size,
 } from '../../constants/card';
 import { Type } from '../../constants/card-list';
+import { getCardListOptions } from '../../helper/utils';
+
+import './style.scss';
 
 const InitialZIndex = 50;
 
@@ -26,42 +28,8 @@ export function CardList({
 }) {
   const [marginLength, setMarginLength] = useState(0);
 
-  const options = useMemo(() => {
-    const cardListSize = (list.length - 1) * marginLength + Size.width;
-
-    switch (type) {
-      case Type.Left:
-      case Type.Right:
-        return {
-          marginKey: 'top',
-          direction: type === Type.Left ? 1 : -1,
-          style: {
-            '--width': `${Size.height}px`,
-            '--height': `${Size.width}px`,
-            height: cardListSize,
-          },
-        };
-      case Type.Top:
-      case Type.Bottom:
-        return {
-          marginKey: 'left',
-          direction: type === Type.Top ? -1 : 1,
-          style: {
-            '--width': `${Size.width}px`,
-            '--height': `${Size.height}px`,
-            width: cardListSize,
-          },
-        };
-      default: return {};
-    }
-  }, [type, list.length, marginLength]);
-
-  const cardListClassName = useMemo(() => classNames(className, 'card-list', {
-    'card-list-left': type === Type.Left,
-    'card-list-right': type === Type.Right,
-    'card-list-top': type === Type.Top,
-    'card-list-bottom': type === Type.Bottom,
-  }), [type, className]);
+  const options = useMemo(() => getCardListOptions(type, list.length, marginLength),
+    [type, list.length, marginLength]);
 
   useEffect(() => {
     if (list.length < 7) {
@@ -73,20 +41,16 @@ export function CardList({
     }
   }, [list.length, scale]);
 
-  const calcStyle = useCallback((index) => ({
+  const getCardStyle = useCallback((index) => ({
     [options.marginKey]: index * marginLength,
     zIndex: index * options.direction + InitialZIndex,
   }), [marginLength, options.direction, options.marginKey]);
 
   return (
-    <div className={cardListClassName} style={options.style}>
+    <div className={classNames(className, 'card-list', `card-list-${type}`)} style={options.style}>
       {
         list.map(({ id, ...props }, index) => (
-          <Card
-            key={id}
-            style={calcStyle(index)}
-            {...props}
-          />
+          <Card key={id} style={getCardStyle(index)} {...props} />
         ))
       }
     </div>

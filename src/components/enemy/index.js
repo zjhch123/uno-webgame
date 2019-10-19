@@ -4,29 +4,18 @@ import classNames from 'classnames';
 import _ from 'underscore';
 import { Button } from '../button';
 import { Type as EnemyType } from '../../constants/enemy';
-import { Type as CardListType } from '../../constants/card-list';
 import { CardList } from '../card-list';
-
-import { EnemyCards } from '../../mock/all-cards';
+import { generateEnemyCardList, parseEnemyTypeToCardListType } from '../../helper/utils';
 
 import './style.scss';
 
 export function Enemy({
   className,
+  cardNum,
   type,
 }) {
-  const cardListType = useMemo(() => {
-    switch (type) {
-      case EnemyType.Left:
-        return CardListType.Left;
-      case EnemyType.Right:
-        return CardListType.Right;
-      case EnemyType.Top:
-        return CardListType.Top;
-      default:
-        return CardListType.Bottom;
-    }
-  }, [type]);
+  const cardListType = useMemo(() => parseEnemyTypeToCardListType(type), [type]);
+  const cardList = useMemo(() => generateEnemyCardList(cardNum), [cardNum]);
 
   const renderActions = () => (
     <div className="enemy-actions">
@@ -34,20 +23,22 @@ export function Enemy({
     </div>
   );
 
+  const renderExtra = () => cardNum > 7 && (
+    <div className="enemy-card-extra">
+      <span>+</span>
+      <span>{cardNum - 7}</span>
+    </div>
+  );
+
   const renderCardList = () => (
     <div className={classNames('enemy-card-list-container', `enemy-card-list-container-${type}`)}>
       <CardList
         className={classNames('enemy-card-list')}
-        list={EnemyCards.slice(0, 7)}
+        list={cardList}
         scale={2.5}
         type={cardListType}
       />
-      { EnemyCards.length > 7 && (
-        <div className="enemy-card-extra">
-          +
-          {EnemyCards.length - 7}
-        </div>
-      )}
+      {renderExtra()}
     </div>
   );
 
@@ -62,8 +53,10 @@ export function Enemy({
 Enemy.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(_.values(EnemyType)).isRequired,
+  cardNum: PropTypes.number,
 };
 
 Enemy.defaultProps = {
   className: null,
+  cardNum: 0,
 };

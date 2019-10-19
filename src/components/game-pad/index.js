@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import _ from 'underscore';
 
-import './style.scss';
 import { Button } from '../button';
 import { CardList } from '../card-list';
 import { AllCards } from '../../mock/all-cards';
 
+import { parseCardCode } from '../../helper/utils';
+
+import './style.scss';
+
 export function GamePad({
   className,
 }) {
+  const sortedCards = _.chain(AllCards)
+    .sortBy(({ cardCode }) => cardCode)
+    .map(({ id, cardCode }) => ({
+      id,
+      ...parseCardCode(cardCode),
+    }))
+    .value();
+
   return (
     <div className={classNames('game-pad', className)}>
       <div className="action-controls">
@@ -18,7 +30,7 @@ export function GamePad({
         <Button className="action uno">UNO!</Button>
       </div>
       <div className="cards-container">
-        <CardList list={AllCards} />
+        <CardList list={sortedCards} />
       </div>
     </div>
   );
