@@ -36,8 +36,10 @@ export function CardList({
       setMarginLength(70 / scale);
     } else if (list.length < 14) {
       setMarginLength(50 / scale);
-    } else {
+    } else if (list.length < 25) {
       setMarginLength(30 / scale);
+    } else {
+      setMarginLength(25 / scale);
     }
   }, [list.length, scale]);
 

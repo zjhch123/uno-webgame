@@ -3,10 +3,11 @@
   "rules": {
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "class-methods-use-this": 0
   },
   "globals": {
     "window": "readonly",
-    "document": "readonly",
+    "document": "readonly"
   }
 }

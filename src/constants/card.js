@@ -46,7 +46,7 @@ export const CardContent = {
   [CardValue.Seven]: 7,
   [CardValue.Eight]: 8,
   [CardValue.Night]: 9,
-  [CardValue.Revert]: 10,
+  [CardValue.Revert]: '🔄',
   [CardValue.Ban]: '🚫',
   [CardValue.Add2]: '+2',
   [CardValue.Add4]: '+4',

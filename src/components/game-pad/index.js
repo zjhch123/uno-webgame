@@ -10,6 +10,7 @@ import { AllCards } from '../../mock/all-cards';
 import { parseCardCode } from '../../helper/utils';
 
 import './style.scss';
+import { SwitchColor } from '../switch-color';
 
 export function GamePad({
   className,
@@ -23,16 +24,19 @@ export function GamePad({
     .value();
 
   return (
-    <div className={classNames('game-pad', className)}>
-      <div className="action-controls">
-        <Button className="action pass">不出</Button>
-        <Button className="action confirm">确认</Button>
-        <Button className="action uno">UNO!</Button>
+    <>
+      <SwitchColor />
+      <div className={classNames('game-pad', className)}>
+        <div className="action-controls">
+          <Button className="action pass">不出</Button>
+          <Button className="action confirm">确认</Button>
+          <Button className="action uno">UNO!</Button>
+        </div>
+        <div className="cards-container">
+          <CardList list={sortedCards} scale={0.9} />
+        </div>
       </div>
-      <div className="cards-container">
-        <CardList list={sortedCards} />
-      </div>
-    </div>
+    </>
   );
 }
 

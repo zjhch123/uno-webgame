@@ -26,10 +26,6 @@
 }
 
 .room-page {
-  .top {
-    width: 420px;
-    height: 200px;
-  }
   .layout {
     position: absolute;
     left: 0;
@@ -43,14 +39,18 @@
     .right-top {
       position: absolute;
     }
+    .top {
+      width: 420px;
+      height: 200px;
+    }
+    .left,
+    .right {
+      width: 280px;
+      height: 320px;
+    }
   }
   .layout-1,
   .layout-3 {
-    .left,
-    .right {
-    width: 320px;
-    height: 320px;
-    }
     .top {
       top: 0;
       left: 50%;
@@ -76,11 +76,11 @@
     }
     .left-top {
       top: 0;
-      left: 120px;
+      left: 180px;
     }
     .right-top {
       top: 0;
-      right: 120px;
+      left: 860px;
     }
   }
   .layout-4 {
@@ -88,11 +88,6 @@
     .right-top {
       width: 400px;
       height: 200px;
-    }
-    .left,
-    .right {
-      width: 320px;
-      height: 320px;
     }
     .left,
     .left-top {
@@ -112,18 +107,16 @@
       bottom: 200px;
     }
     .left-top {
-      left: 280px;
+      left: 340px;
     }
     .right-top {
-      left: 800px;
+      left: 780px;
     }
   }
   .layout-5 {
-    .left,
     .left-top,
-    .right,
     .right-top {
-      width: 320px;
+      width: 280px;
       height: 320px;
     }
     .top {

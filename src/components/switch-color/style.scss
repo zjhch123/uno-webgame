@@ -1,0 +1,30 @@
+.switch-color-container {
+  display: flex;
+  justify-content: space-around;
+  .item {
+    padding: 8px;
+    .block {
+      width: 40px;
+      height: 40px;
+    }
+    .label {
+      display: flex;
+      align-items: center;
+      .block {
+        margin-left: 12px;
+      }
+    }
+  }
+  .item-red .block {
+    background: red;
+  }
+  .item-green .block {
+    background: green;
+  }
+  .item-yellow .block {
+    background: yellow;
+  }
+  .item-blue .block {
+    background: blue;
+  }
+}

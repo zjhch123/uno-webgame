@@ -1,40 +1,52 @@
 .enemy {
-  padding: 15px;
+  width: 100%;
+  height: 100%;
   &.enemy-type-0 {
     .enemy-actions {
-      text-align: right;
+      flex-direction: row-reverse;
     }
   }
   &.enemy-type-1 {
+    .enemy-actions {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column-reverse;
+    }
+    .enemy-card-list-container {
+      padding-left: 80px;
+      height: 100%;
+    }
+  }
+  &.enemy-type-2,
+  &.enemy-type-0 {
+    .enemy-actions {
+      height: 50px;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+    }
+    .enemy-card-list-container {
+      padding-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  .enemy-card-list-container-1 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    .enemy-actions {
-      margin-right: 20px;
-    }
   }
-  &.enemy-type-2 {
-    .enemy-actions {
-      text-align: left;
-    }
-  }
-  .enemy-card-list-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &.enemy-card-list-container-2 {
-      flex-direction: row-reverse;
-    }
-    .enemy-card-extra {
-      color: black;
-      font-weight: bolder;
-      font-size: 30px;
-      padding: 15px;
-      user-select: none;
-    }
-  }
+
   .enemy-actions {
     user-select: none;
+    position: absolute;
     .enemy-uno {
       width: 50px;
       height: 50px;
@@ -52,5 +64,12 @@
         box-shadow: 0 0 0 black;
       }
     }
+  }
+  .enemy-card-extra {
+    color: black;
+    font-weight: bolder;
+    font-size: 30px;
+    padding: 15px;
+    user-select: none;
   }
 };
