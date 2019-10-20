@@ -15,7 +15,7 @@ export function FormGroup({
         {children}
       </div>
     </div>
-  )
+  );
 }
 
 FormGroup.propTypes = {
@@ -26,6 +26,6 @@ FormGroup.propTypes = {
 };
 
 FormGroup.defaultProps = {
-  htmlForm: "",
+  htmlFor: '',
   className: null,
 };

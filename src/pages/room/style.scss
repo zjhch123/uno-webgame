@@ -26,6 +26,10 @@
 }
 
 .room-page {
+  .top {
+    width: 420px;
+    height: 200px;
+  }
   .layout {
     position: absolute;
     left: 0;
@@ -42,6 +46,11 @@
   }
   .layout-1,
   .layout-3 {
+    .left,
+    .right {
+    width: 320px;
+    height: 320px;
+    }
     .top {
       top: 0;
       left: 50%;
@@ -60,6 +69,11 @@
     }
   }
   .layout-2 {
+    .left-top,
+    .right-top {
+      width: 400px;
+      height: 200px;
+    }
     .left-top {
       top: 0;
       left: 120px;
@@ -70,6 +84,16 @@
     }
   }
   .layout-4 {
+    .left-top,
+    .right-top {
+      width: 400px;
+      height: 200px;
+    }
+    .left,
+    .right {
+      width: 320px;
+      height: 320px;
+    }
     .left,
     .left-top {
       left: 0;
@@ -88,13 +112,20 @@
       bottom: 200px;
     }
     .left-top {
-      left: 20%;
+      left: 280px;
     }
     .right-top {
-      right: 20%;
+      left: 800px;
     }
   }
   .layout-5 {
+    .left,
+    .left-top,
+    .right,
+    .right-top {
+      width: 320px;
+      height: 320px;
+    }
     .top {
       top: 0;
       left: 50%;
@@ -106,11 +137,11 @@
     }
     .right,
     .left {
-      bottom: 80px;
+      top: 380px;
     }
     .right-top,
     .left-top {
-      top: 80px;
+      top: 60px;
     }
     .right,
     .right-top {

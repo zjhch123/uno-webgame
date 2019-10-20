@@ -9,23 +9,23 @@ import './style.scss';
 const players = [
   {
     id: 1,
-    cardNum: 95,
+    cardNum: 2,
   },
   {
     id: 2,
-    cardNum: 33,
+    cardNum: 3,
   },
   {
     id: 3,
-    cardNum: 50,
+    cardNum: 1,
   },
   {
     id: 4,
-    cardNum: 70,
+    cardNum: 4,
   },
   {
     id: 5,
-    cardNum: 100,
+    cardNum: 5,
   },
 ];
 
