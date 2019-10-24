@@ -13,6 +13,7 @@ export function Enemy({
   className,
   cardNum,
   type,
+  isActive,
 }) {
   const cardListType = useMemo(() => parseEnemyTypeToCardListType(type), [type]);
   const cardList = useMemo(() => generateEnemyCardList(cardNum), [cardNum]);
@@ -43,7 +44,7 @@ export function Enemy({
   );
 
   return (
-    <div className={classNames(className, 'enemy', `enemy-type-${type}`)}>
+    <div className={classNames(className, 'enemy', `enemy-type-${type}`, { 'enemy-active': isActive })}>
       {renderActions()}
       {renderCardList()}
     </div>
@@ -54,9 +55,11 @@ Enemy.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(_.values(EnemyType)).isRequired,
   cardNum: PropTypes.number,
+  isActive: PropTypes.bool,
 };
 
 Enemy.defaultProps = {
   className: null,
   cardNum: 0,
+  isActive: false,
 };

@@ -8,6 +8,7 @@ import { Layout as LayoutOptions } from '../../constants/layout';
 
 export function Layout({
   enemies,
+  active,
 }) {
   const sortedEnemies = enemies.sort(({ id: prev }, { id: next }) => prev - next);
   const options = LayoutOptions[enemies.length];
@@ -17,7 +18,7 @@ export function Layout({
     const { className, type } = options[index];
     return (
       <div className={className} key={id}>
-        <Enemy type={type} cardNum={cardNum} />
+        <Enemy type={type} cardNum={cardNum} isActive={active === id} />
       </div>
     );
   };
@@ -34,8 +35,10 @@ Layout.propTypes = {
     id: PropTypes.number.isRequired,
     cardNum: PropTypes.number.isRequired,
   })),
+  active: PropTypes.number,
 };
 
 Layout.defaultProps = {
   enemies: [],
+  active: null,
 };

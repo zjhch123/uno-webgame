@@ -41,7 +41,7 @@ export function Room({
         <span>{roomId}</span>
         <Button type="link" onClick={goBack}>返回大厅</Button>
       </div>
-      <Layout className="room-layout" enemies={enemies} />
+      <Layout className="room-layout" enemies={enemies} active={enemies[1].id} />
       <GamePad className="game-pad-me" />
     </div>
   );
