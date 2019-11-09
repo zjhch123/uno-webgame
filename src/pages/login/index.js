@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { UserLoginProducer } from '../../api';
-import { FormGroup } from '../../components/form-group';
-import { Input } from '../../components/input';
+import React, { useEffect } from 'react';
+import PropType from 'prop-types';
+import _ from 'underscore';
+
 import { Button } from '../../components/button';
 import { useFetch } from '../../hooks/use-fetch';
+import { AuthLoginProducer, UserLoginProducer } from '../../api';
 
 import './style.scss';
 
 export function Login({
   onLogin,
 }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const AuthLogin = useFetch(AuthLoginProducer);
   const UserLogin = useFetch(UserLoginProducer);
 
   const login = () => {
-    UserLogin({ username, password }).then((userInfo) => onLogin(userInfo));
+    AuthLogin().then(({ data }) => {
+      window.location.href = data;
+    });
   };
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const code = url.searchParams.get('code');
+
+    if (_.isEmpty(code)) {
+      return;
+    }
+
+    UserLogin(code).then(({ data: userInfo }) => {
+      if (!userInfo.login) { return; }
+
+      onLogin(userInfo);
+      window.history.pushState('login', '', '/');
+    });
+  }, [UserLogin, onLogin]);
 
   return (
     <div className="login-page">
-      <FormGroup label="username">
-        <Input type="text" value={username} onChange={(newUsername) => setUsername(newUsername)} />
-      </FormGroup>
-      <FormGroup label="password">
-        <Input type="password" value={password} onChange={(newPassword) => setPassword(newPassword)} />
-      </FormGroup>
       <div>
-        <Button onClick={login}>Login</Button>
+        <Button onClick={login}>使用github账号登录</Button>
       </div>
     </div>
   );
 }
 
 Login.propTypes = {
-  onLogin: PropTypes.func.isRequired,
+  onLogin: PropType.func.isRequired,
 };

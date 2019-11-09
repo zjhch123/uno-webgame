@@ -9,8 +9,8 @@ export function Landing() {
   const handleLogin = (loginUserInfo) => setUserInfo(loginUserInfo);
 
   return (
-    userInfo !== null && (!userInfo.isLogin
-      ? <Login onLogin={handleLogin} />
-      : <Home user={userInfo} />)
+    userInfo !== null && (userInfo.login
+      ? <Home user={userInfo} />
+      : <Login onLogin={handleLogin} />)
   );
 }
