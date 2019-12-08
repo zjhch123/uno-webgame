@@ -9,7 +9,8 @@
     "username": "zjhch123",
     "level": 10,
     "roomId": 1000,
-    "status": 2
+    "status": 2,
+    "token": "123abc"
   },
   "login": {
     "isLogin": true,

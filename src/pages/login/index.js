@@ -28,11 +28,12 @@ export function Login({
       return;
     }
 
+    window.history.pushState('login', '', '/');
+
     UserLogin(code).then(({ data: userInfo }) => {
       if (!userInfo.login) { return; }
 
       onLogin(userInfo);
-      window.history.pushState('login', '', '/');
     });
   }, [UserLogin, onLogin]);
 
